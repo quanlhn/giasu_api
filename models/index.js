@@ -10,10 +10,19 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
-sequelize = new Sequelize('giasu_api', 'root', '', {
-	host: '0.0.0.0',
-	dialect: 'mysql',
-});
+// sequelize = new Sequelize('giasu_api', 'root', 'Quanlhn2201', {
+// 	host: '0.0.0.0',
+// 	dialect: 'mysql',
+// });
+
+sequelize = new Sequelize({
+	username: process.env.DB_USERNAME,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DATABASE,
+	dialect: "mysql",
+	port: process.env.DB_PORT,
+	host: process.env.DB_HOST
+})
 
 fs.readdirSync(__dirname)
 	.filter((file) => {
