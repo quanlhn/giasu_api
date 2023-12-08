@@ -51,6 +51,6 @@ app.use((err, req, res, next) => {
 	res.status(status).json(resData);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
 	console.info(`App listening on port ${PORT}`);
 });
