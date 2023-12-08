@@ -1,0 +1,49 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: ['deploy2']
+  pull_request:
+    branches: ['deploy2']
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node-version: [21.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: NPM install, build and test
+        run: |
+          npm install
+          sequelize init
+          npx sequelize-cli db:migrate
+          npx sequelize-cli db:seed:all
+          npm run 
+          npm test
+     
+          
+
+  deploy:
+    name: Deploy
+    needs: [build]
+    runs-on: windows-latest
+    steps:
+       - name: Install Railway
+         run: npm i -g @railway/cli
+       - name: Deploy
+         run: railway up
+         env: 
+           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
