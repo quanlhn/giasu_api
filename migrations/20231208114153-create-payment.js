@@ -19,7 +19,7 @@ module.exports = {
 				user_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'users',
+						model: 'Users',
 						key: 'id',
 					},
 				},

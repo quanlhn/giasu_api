@@ -19,7 +19,7 @@ module.exports = {
 				user_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'users',
+						model: 'Users',
 						key: 'id',
 					},
 					onDelete: 'CASCADE',
@@ -28,7 +28,7 @@ module.exports = {
 				post_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'posts',
+						model: 'Posts',
 						key: 'post_id',
 					},
 					onDelete: 'CASCADE',
@@ -37,7 +37,7 @@ module.exports = {
 				comment_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'comments',
+						model: 'Comments',
 						key: 'comment_id',
 					},
 					onDelete: 'CASCADE',
