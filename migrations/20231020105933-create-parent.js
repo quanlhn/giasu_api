@@ -3,7 +3,7 @@
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable(
-			'Parents',
+			'parents',
 			{
 				id: {
 					allowNull: false,
@@ -15,7 +15,7 @@ module.exports = {
 					type: Sequelize.INTEGER.UNSIGNED,
 					unique: true,
 					references: {
-						model: 'Users',
+						model: 'users',
 						key: 'id',
 					},
 					onDelete: 'CASCADE',
@@ -42,6 +42,6 @@ module.exports = {
 		);
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Parents');
+		await queryInterface.dropTable('parents');
 	},
 };

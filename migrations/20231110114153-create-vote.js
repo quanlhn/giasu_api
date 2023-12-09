@@ -3,7 +3,7 @@
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable(
-			'Votes',
+			'votes',
 			{
 				id: {
 					allowNull: false,
@@ -19,7 +19,7 @@ module.exports = {
 				user_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'Users',
+						model: 'users',
 						key: 'id',
 					},
 					onDelete: 'CASCADE',
@@ -28,7 +28,7 @@ module.exports = {
 				post_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'Posts',
+						model: 'posts',
 						key: 'post_id',
 					},
 					onDelete: 'CASCADE',
@@ -37,7 +37,7 @@ module.exports = {
 				comment_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'Comments',
+						model: 'comments',
 						key: 'comment_id',
 					},
 					onDelete: 'CASCADE',
@@ -63,6 +63,6 @@ module.exports = {
 		);
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Votes');
+		await queryInterface.dropTable('votes');
 	},
 };

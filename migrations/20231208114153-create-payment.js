@@ -3,7 +3,7 @@
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable(
-			'Payments',
+			'payments',
 			{
 				id: {
 					allowNull: false,
@@ -19,7 +19,7 @@ module.exports = {
 				user_id: {
 					type: Sequelize.INTEGER.UNSIGNED,
 					references: {
-						model: 'Users',
+						model: 'users',
 						key: 'id',
 					},
 				},
@@ -42,6 +42,6 @@ module.exports = {
 		);
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Payments');
+		await queryInterface.dropTable('payments');
 	},
 };

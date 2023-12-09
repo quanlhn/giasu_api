@@ -3,7 +3,7 @@
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		await queryInterface.createTable(
-			'Admins',
+			'admins',
 			{
 				id: {
 					allowNull: false,
@@ -15,7 +15,7 @@ module.exports = {
 					type: Sequelize.INTEGER.UNSIGNED,
 					unique: true,
 					references: {
-						model: 'Users',
+						model: 'users',
 						key: 'id',
 					},
 					onDelete: 'CASCADE',
